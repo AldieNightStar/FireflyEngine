@@ -4,19 +4,19 @@ import haxidenti.firefly.love.Love
 
 object Project {
     fun newProject() {
-        ProjectFiles.generateIncludeFile(false)
-        ProjectFiles.generateMainFile()
-        ProjectFiles.createFolderStructure()
-        ProjectFiles.generateGitIgnore()
+        ProjectGen.generateIncludeFile(false)
+        ProjectGen.generateMainFile()
+        ProjectGen.createFolderStructure()
+        ProjectGen.generateGitIgnore()
     }
 
     fun runProject() {
-        ProjectFiles.generateIncludeFile(false)
+        ProjectGen.generateIncludeFile(false)
         Love.run(ProjectFiles.projectFolder) { println(it) }
-        ProjectFiles.createFolderStructure()
+        ProjectGen.createFolderStructure()
     }
 
     fun releaseProject() {
-        ProjectFiles.packEngineFiles()
+        ProjectGen.packEngineFiles()
     }
 }
