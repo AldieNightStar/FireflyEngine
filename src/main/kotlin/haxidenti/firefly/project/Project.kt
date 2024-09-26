@@ -7,6 +7,7 @@ object Project {
         ProjectFiles.generateIncludeFile(false)
         ProjectFiles.generateMainFile()
         ProjectFiles.createFolderStructure()
+        ProjectFiles.generateGitIgnore()
     }
 
     fun runProject() {

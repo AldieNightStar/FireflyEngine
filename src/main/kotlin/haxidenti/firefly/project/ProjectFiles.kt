@@ -12,12 +12,22 @@ object ProjectFiles {
     val includeFile = projectFolder.resolve("____.lua")
     val mainFile = projectFolder.resolve("main.lua")
     val outputDist = projectFolder.resolve("output.love")
+    val gitIgnoreFile = projectFolder.resolve(".gitignore")
 
     // Folders in project
     val generateFilesFolder = projectFolder.resolve("gen")
 
     fun createFolderStructure() {
         if (!generateFilesFolder.isDirectory) generateFilesFolder.mkdirs()
+    }
+
+    fun generateGitIgnore() {
+        gitIgnoreFile.writeText("""
+            output.love
+            ____.lua
+            gen/**
+            .vscode/**
+        """.trimIndent())
     }
 
     fun packEngineFiles() {
