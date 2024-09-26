@@ -29,9 +29,11 @@ object OS {
             .directory(workDir)
 
         val process = processBuilder.start()
-        process.inputStream.reader().forEachLine(output)
-        process.errorStream.reader().forEachLine(output)
-        process.waitFor()
+
+        Thread {
+            process.inputStream.reader().forEachLine(output)
+            process.errorStream.reader().forEachLine(output)
+        }.also { it.isDaemon = true }.start()
     }
 
     fun time(): String {
