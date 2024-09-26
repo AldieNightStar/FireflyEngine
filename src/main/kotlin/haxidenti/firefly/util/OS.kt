@@ -1,10 +1,8 @@
 package haxidenti.firefly.util
 
-import haxidenti.firefly.exception.CompileException
 import java.io.File
 import java.time.LocalTime
 import java.util.*
-import java.util.concurrent.TimeUnit
 
 object OS {
     private val os = System.getProperty("os.name").lowercase(Locale.ROOT)
@@ -17,7 +15,6 @@ object OS {
         args: Array<String>,
         workDir: File,
         output: (String) -> Unit,
-        waitSec: Long = 45,
     ) {
         val command = if (isWindows) {
             listOf("cmd", "/c", name, *args)
@@ -34,14 +31,7 @@ object OS {
         val process = processBuilder.start()
         process.inputStream.reader().forEachLine(output)
         process.errorStream.reader().forEachLine(output)
-        if (!process.waitFor(waitSec, TimeUnit.SECONDS)) {
-            throw CompileException("Command $name is not responding too long")
-        }
-
-        val exitCode = process.waitFor()
-        if (exitCode != 0) {
-            throw CompileException("Command $name ends with code : $exitCode")
-        }
+        process.waitFor()
     }
 
     fun time(): String {

@@ -11,6 +11,13 @@ object ProjectFiles {
     val includeFile = projectFolder.resolve("____.lua")
     val mainFile = projectFolder.resolve("main.lua")
 
+    // Folders in project
+    val generateFilesFolder = projectFolder.resolve("gen")
+
+    fun createFolderStructure() {
+        if (!generateFilesFolder.isDirectory) generateFilesFolder.mkdirs()
+    }
+
     fun generateIncludeFile() {
         val engineFilesPath = Engine.engineLoveFolder.canonicalPath
             .replace("\\", "/") + "/?.lua"

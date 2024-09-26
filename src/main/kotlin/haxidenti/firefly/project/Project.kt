@@ -6,11 +6,12 @@ object Project {
     fun createProject() {
         ProjectFiles.generateIncludeFile()
         ProjectFiles.generateMainFile()
+        ProjectFiles.createFolderStructure()
     }
 
     fun runProject() {
         ProjectFiles.generateIncludeFile()
-        ProjectFiles.generateMainFile()
         Love.run(ProjectFiles.projectFolder) { println(it) }
+        ProjectFiles.createFolderStructure()
     }
 }
