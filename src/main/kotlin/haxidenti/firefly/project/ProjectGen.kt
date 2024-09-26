@@ -52,15 +52,16 @@ object ProjectGen {
             }
 
             // Add include "firefly_engine" no matter what
-            append(
+            appendLine(
                 """
                 require("firefly_engine")
+                
                 """.trimIndent()
             )
 
             // If dev, then add last message comment to the file
             if (isDev) {
-                append(
+                appendLine(
                     """
                      -- Please, add "init_firefly" at the very end of "main.lua"
                      -- It will initialize everything
