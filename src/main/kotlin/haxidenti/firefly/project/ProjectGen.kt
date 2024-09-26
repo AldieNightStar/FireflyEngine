@@ -1,7 +1,6 @@
 package haxidenti.firefly.project
 
 import haxidenti.firefly.engine.Engine
-import haxidenti.firefly.project.ProjectFiles.generateFilesFolder
 import haxidenti.firefly.project.ProjectFiles.gitIgnoreFile
 import haxidenti.firefly.project.ProjectFiles.includeFile
 import haxidenti.firefly.project.ProjectFiles.mainFile
@@ -11,9 +10,6 @@ import haxidenti.firefly.util.ZipUtil
 import haxidenti.firefly.util.writeIfDiffers
 
 object ProjectGen {
-    fun createFolderStructure() {
-        if (!generateFilesFolder.isDirectory) generateFilesFolder.mkdirs()
-    }
 
     fun generateGitIgnore() {
         gitIgnoreFile.writeText(

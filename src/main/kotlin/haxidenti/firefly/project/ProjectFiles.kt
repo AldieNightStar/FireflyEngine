@@ -10,7 +10,4 @@ object ProjectFiles {
     val mainFile = projectFolder.resolve("main.lua")
     val outputDist = projectFolder.resolve("output.love")
     val gitIgnoreFile = projectFolder.resolve(".gitignore")
-
-    // Folders in project
-    val generateFilesFolder = projectFolder.resolve("gen")
 }

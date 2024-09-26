@@ -10,7 +10,6 @@ private val USAGE = """
     
         firefly run - Run the project
         firefly rel - Release the project
-        firefly gen - Run code generator
 """.trimIndent()
 
 fun main(args: Array<String>) {
@@ -18,7 +17,6 @@ fun main(args: Array<String>) {
         "new" -> Project.newProject()
         "run" -> Project.runProject()
         "rel" -> Project.releaseProject()
-        "gen" -> println("IN TODO")
         else -> println(USAGE)
     }
 }
