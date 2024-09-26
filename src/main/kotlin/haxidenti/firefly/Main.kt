@@ -18,6 +18,7 @@ fun main(args: Array<String>) {
         "new" -> Project.newProject()
         "run" -> Project.runProject()
         "rel" -> Project.releaseProject()
+        "gen" -> println("IN TODO")
         else -> println(USAGE)
     }
 }
