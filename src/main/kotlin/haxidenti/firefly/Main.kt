@@ -1,5 +1,7 @@
 package haxidenti.firefly;
 
+import haxidenti.firefly.project.Project
+
 fun main() {
-    println("Hello, Kotlin");
+    Project.runProject()
 }
