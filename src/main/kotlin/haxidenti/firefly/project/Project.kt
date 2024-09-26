@@ -3,15 +3,19 @@ package haxidenti.firefly.project
 import haxidenti.firefly.love.Love
 
 object Project {
-    fun createProject() {
-        ProjectFiles.generateIncludeFile()
+    fun newProject() {
+        ProjectFiles.generateIncludeFile(false)
         ProjectFiles.generateMainFile()
         ProjectFiles.createFolderStructure()
     }
 
     fun runProject() {
-        ProjectFiles.generateIncludeFile()
+        ProjectFiles.generateIncludeFile(false)
         Love.run(ProjectFiles.projectFolder) { println(it) }
         ProjectFiles.createFolderStructure()
+    }
+
+    fun releaseProject() {
+        ProjectFiles.packEngineFiles()
     }
 }

@@ -8,15 +8,16 @@ private val USAGE = """
         
         firefly new     - Create new project in current folder
     
-        firefly run     - Run the project
-        firefly release - Release the project
-        firefly gen     - Run code generator
+        firefly run - Run the project
+        firefly rel - Release the project
+        firefly gen - Run code generator
 """.trimIndent()
 
 fun main(args: Array<String>) {
     when (args.firstOrNull() ?: "") {
-        "new" -> Project.createProject()
+        "new" -> Project.newProject()
         "run" -> Project.runProject()
+        "rel" -> Project.releaseProject()
         else -> println(USAGE)
     }
 }
