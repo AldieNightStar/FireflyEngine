@@ -51,7 +51,6 @@ object ProjectGen {
             appendLine(
                 """
                 require("firefly_engine")
-                
                 """.trimIndent()
             )
 
