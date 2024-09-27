@@ -5,5 +5,9 @@
 * Made for creating simple 2d games or Visual Novels
 
 ## Contents
-* [JSON](doc/json.md)
-* [Persistent Variables](doc/Variables.md)
+* Game
+	* [Persistent Variables](doc/Variables.md)
+* Util
+	* [JSON](doc/json.md)
+* Collections
+	* [List](doc/List.md)
