@@ -52,6 +52,7 @@ object ProjectGen {
                 """
                 fireflyDevMode = ${!isRelease}
                 require("firefly_engine")
+                
                 """.trimIndent()
             )
 
