@@ -50,9 +50,8 @@ object ProjectGen {
             // Add include "firefly_engine" no matter what
             appendLine(
                 """
-                require("firefly_engine")
-                
                 fireflyDevMode = ${!isRelease}
+                require("firefly_engine")
                 """.trimIndent()
             )
 
