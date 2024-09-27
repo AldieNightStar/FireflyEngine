@@ -5,6 +5,7 @@ require "engine.class"
 require "engine.str"
 require "engine.list"
 require "engine.console"
+require "engine.interface"
 
 -- Variables
 local v = require "engine.v"

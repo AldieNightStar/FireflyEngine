@@ -5,8 +5,9 @@
 * Made for creating simple 2d games or Visual Novels
 
 ## Contents
-* Coding
+* OOP
 	* [Classes](doc/class.md)
+	* [Interfaces](doc/interface.md)
 * Game
 	* [Persistent Variables](doc/Variables.md)
 * Util
