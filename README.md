@@ -6,12 +6,12 @@
 
 ## Contents
 * OOP
-	* [Classes](doc/class.md)
-	* [Interfaces](doc/interface.md)
+	* [Classes](doc/Class.md)
+	* [Interfaces](doc/Interface.md)
 * Game
 	* [Persistent Variables](doc/Variables.md)
 * Util
-	* [JSON](doc/json.md)
+	* [JSON](doc/Json.md)
 	* [Strings `str`](doc/str.md)
 * Collections
 	* [List](doc/List.md)
