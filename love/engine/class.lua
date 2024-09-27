@@ -1,3 +1,15 @@
+local classes = {}
+
+function CLASS_BY(name)
+	return classes[name]
+end
+
+function IS_CLASS(v)
+	if type(v) ~= "table" then return false end
+	if v.NAME == nil then return false end
+	return v.__class == true
+end
+
 function CLASS(name, ...)
 	local class = {}
 	local fields = {...}
@@ -5,7 +17,11 @@ function CLASS(name, ...)
 	-- Assign name
 	class.NAME = name
 
-	-- TODO register class to be able to store to V and restore back
+	-- Mark the value
+	class.__class = true
+
+	-- Register class
+	classes[name] = class
 
 	function class.IS(o)
 		local mt = getmetatable(o)

@@ -9,7 +9,7 @@
 ## Define new class
 ```lua
 -- Create your class
--- name      - Full name of the class (Better to add prefixes with namespace "game." and so forth)
+-- name      - Full name of the class. Should contain namespace at the beginning to not collide with others
 -- fields... - Fields to add into the class. Will be used in "Point.new(x, y)" constructor
 Point = class("game.Point", "x", "y")
 
@@ -49,4 +49,15 @@ Point.IS(p)
 
 -- Get name of the class
 Point.NAME
+
+-- Test whether this is class at all
+-- Will return true if this is a real CLASS table
+IS_CLASS(Point)
+```
+
+
+## Get class by name
+```lua
+-- Gets class by name, if it's not in global variables
+local Point = CLASS_BY("game.Point")
 ```
