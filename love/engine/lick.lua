@@ -95,7 +95,6 @@ local function draw()
     drawok_old = not drawok
 end
 
-
 function love.run()
     math.randomseed(os.time())
     math.random()
@@ -109,7 +108,7 @@ function love.run()
         -- Process events.
         if love.event then
             love.event.pump()
-            for e, a, b, c, d in love.event.poll() do
+            for e, a, b, c, d, f, g, h, i, j, k, l in love.event.poll() do
                 if e == "quit" then
                     if not love.quit or not love.quit() then
                         if love.audio then
@@ -119,7 +118,7 @@ function love.run()
                     end
                 end
 
-                love.handlers[e](a, b, c, d)
+                love.handlers[e](a, b, c, d, f, g, h, i, j, k, l)
             end
         end
 
