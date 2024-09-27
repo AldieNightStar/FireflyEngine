@@ -1,6 +1,11 @@
-function CLASS(...)
+function CLASS(name, ...)
 	local class = {}
 	local fields = {...}
+
+	-- Assign name
+	class.NAME = name
+
+	-- TODO register class to be able to store to V and restore back
 
 	function class.IS(o)
 		local mt = getmetatable(o)

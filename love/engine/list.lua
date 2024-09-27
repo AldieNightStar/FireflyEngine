@@ -1,4 +1,4 @@
-List = CLASS()
+List = CLASS("std.List")
 
 function List:add(el)
 	if self._elements == nil then self._elements = {} end
