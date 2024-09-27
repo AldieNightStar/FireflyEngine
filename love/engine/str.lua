@@ -1,7 +1,7 @@
 function str(value)
 	if type(value) == "table" then
-		-- IF IT HAS toString FUNCTION
-		if value.toString then return value:toString() end
+		-- IF IT HAS string FUNCTION
+		if value.string then return value:string() end
 
 		-- Create String builder array
 		local sb = {}

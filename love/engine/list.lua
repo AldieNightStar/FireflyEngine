@@ -82,3 +82,7 @@ function List:range(start, _end)
 	end
 	return newList
 end
+
+function List:string()
+	return "List:" .. str(self._elements)
+end
