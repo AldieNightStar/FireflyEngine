@@ -1,6 +1,6 @@
 console = {
 	lines=25,
-	fontSize=20,
+	fontSize=14,
 	maxLineSize=130,
 	enabled=true,
 }
