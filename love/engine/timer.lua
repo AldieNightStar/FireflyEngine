@@ -12,7 +12,6 @@ function setTimer(intervalSec, func)
 	if intervalSec < 0.01 then intervalSec = 0.01 end
 	local t = Timer.new(0, intervalSec, false, true, func)
 	table.insert(timers, t)
-	print(timers)
 	return t
 end
 
@@ -51,9 +50,13 @@ function Timer:callback(cb)
 	return this
 end
 
+function Timer:string()
+	return "TIMER["..self._interval.."]"
+end
+
 local function removeStoppedTimers()
 	local newList = {}
-	for _, t in ipairs(timers) do
+	for _, t in xpairs(timers) do
 		if not t.stopped then
 			table.insert(newList, t)
 		end
@@ -62,7 +65,7 @@ local function removeStoppedTimers()
 end
 
 addUpdater("fireflyUpdateTimers", function(dt, name)
-	for _, t in ipairs(timers) do
+	for _, t in xpairs(timers) do
 		t:_update(dt)
 	end
 	removeStoppedTimers()

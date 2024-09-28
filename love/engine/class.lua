@@ -33,7 +33,7 @@ function CLASS(name, ...)
 		local args = {...}
 		setmetatable(t, {__index=class})
 
-		for argId, argValue in ipairs(args) do
+		for argId, argValue in xpairs(args) do
 			t[fields[argId]] = argValue
 		end
 

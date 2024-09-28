@@ -14,7 +14,7 @@ end
 
 function List:index(el)
 	if self._elements == nil then return nil end
-	for id, value in ipairs(self._elements) do
+	for id, value in xpairs(self._elements) do
 		if value == el then return id end
 	end
 	return nil
@@ -48,7 +48,7 @@ end
 function List:filter(fn)
 	if self._elements == nil then return List.new() end
 	local newList = List.new()
-	for id, value in ipairs(self._elements) do
+	for id, value in xpairs(self._elements) do
 		if (fn(value)) then
 			newList:add(value)
 		end
@@ -59,7 +59,7 @@ end
 function List:map(fn, removeNils)
 	if self._elements == nil then return List.new() end
 	local newList = List.new()
-	for id, value in ipairs(self._elements) do
+	for id, value in xpairs(self._elements) do
 		if removeNils then
 			local mapped = fn(value)
 			if mapped ~= nil then
@@ -75,7 +75,7 @@ end
 function List:range(start, _end)
 	if self._elements == nil then return List.new() end
 	local newList = List.new()
-	for id, value in ipairs(self._elements) do
+	for id, value in xpairs(self._elements) do
 		if id >= start and id <= _end then
 			newList:add(value)
 		end

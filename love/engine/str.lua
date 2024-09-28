@@ -8,7 +8,7 @@ function str(value)
 		
 		-- ARRAY
 		if value[1] ~= nil then
-			for _, val in ipairs(value) do
+			for _, val in xpairs(value) do
 				table.insert(sb, str(val))
 			end
 		else

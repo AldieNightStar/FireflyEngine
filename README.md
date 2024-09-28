@@ -13,5 +13,9 @@
 * Util
 	* [JSON](doc/Json.md)
 	* [Strings `str`](doc/str.md)
+	* [Signal](doc/Signal.md)
+	* [Timers](doc/Timer.md)
+	* [Updaters](doc/Updaters.md)
+	* [Console](doc/Console.md)
 * Collections
 	* [List](doc/List.md)

@@ -39,7 +39,7 @@ function console.print(...)
 
 	local args = {...}
 	local printables = {}
-	for _, printable in ipairs(args) do
+	for _, printable in xpairs(args) do
 		table.insert(printables, str(printable))
 	end
 	addContent(table.concat(printables, " "))
@@ -52,7 +52,7 @@ function console.draw()
 	-- Do not draw if console is disabled
 	if not console.enabled then return end
 
-	for id, t in ipairs(consoleContent) do
+	for id, t in xpairs(consoleContent) do
 		t = string.gsub(t, "\n", " ")
 		t = string.gsub(t, "\t", " ")
 		-- Print black shadow back
@@ -68,8 +68,6 @@ end
 function console.key(k)
 	-- Do not do anything in RELEASE
 	if isRelease() then return end
-
-	if type(k) ~= "string" then return end
 	
 	if k == "`" then console.enabled = not console.enabled end
 end

@@ -15,7 +15,7 @@ function Signal:emit(data)
 	local oldConnections = self._connections
 	self._connections = {}
 
-	for _, con in ipairs(oldConnections) do
+	for _, con in xpairs(oldConnections) do
 		if con(data) == true then
 			table.insert(self._connections, con)
 		end
