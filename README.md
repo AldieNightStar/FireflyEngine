@@ -23,3 +23,4 @@
 	* [List](doc/List.md)
 * Functions
 	* [`func`](doc/Funcs.md)
+	* [FuncRefs](doc/FuncRefs.md)
