@@ -106,4 +106,8 @@ function List:string()
 	return "List:{" .. self:concat(", ") .. "}"
 end
 
+function List:unpack()
+	return unpack(self._elements)
+end
+
 function List:items() return xpairs(self) end

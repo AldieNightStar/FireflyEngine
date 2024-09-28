@@ -72,4 +72,7 @@ list:get(1)
 for id, value in list:items() do
 	-- Do something
 end
+
+-- Unpack list items into variable
+a, b = list:unpack()
 ```
