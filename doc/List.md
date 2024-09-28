@@ -3,23 +3,23 @@
 ## Usage
 * Better than `table.insert` in plain Lua
 * Could be used to store value and do operations
+* Supports `nil` values if need
+* Has no `remove` functions. To remove something, create new list
 
 ## Usage
 ```lua
 -- Create new List
 local list = List.new()
 
+-- Create new List with already added elements
+-- Instead of () you should use {} here
+local list = List.of { "Knife", "Sword", "Bread" }
+
 -- Add some elements
 -- Returns new size
 list:add("Knife")
 list:add("Sword")
 list:add("Bread")
-
--- Remove value from list
-list:remove("Knife")
-
--- Remove value at some index from list
-list:removeAt(3)
 
 -- Find first index of the element
 -- Returns number
@@ -63,4 +63,13 @@ list:range(2, 3)
 
 -- String representation of the list
 list:string()
+
+-- Get elements by their index
+list:get(1)
+
+-- Iterate over list
+-- You can also use it in: xparis(list)
+for id, value in list:items() do
+	-- Do something
+end
 ```

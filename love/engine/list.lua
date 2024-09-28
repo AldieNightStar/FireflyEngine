@@ -1,9 +1,19 @@
 List = CLASS("std.List")
 
+function List.of(items)
+	local list = List.new()
+	for i, v in xpairs(items) do
+		list:add(v)
+	end
+	return list
+end
+
 function List:add(el)
 	if self._elements == nil then self._elements = {} end
-	table.insert(self._elements, el)
-	return #self._elements
+	if self._size == nil then self._size = 0 end
+	self._elements[self._size + 1] = el
+	self._size = self._size + 1
+	return self._size
 end
 
 function List:fill(count, func)
@@ -20,16 +30,15 @@ function List:index(el)
 	return nil
 end
 
-function List:remove(el)
+function List:get(id)
 	if self._elements == nil then return nil end
-	local id = self:index(el)
-	if id == nil then return false end
-	table.remove(self._elements, id)
+	return self._elements[id]
 end
 
 function List:size()
 	if self._elements == nil then return 0 end
-	return #self._elements
+	if self._size     == nil then return 0 end
+	return self._size
 end
 
 function List:isEmpty()
@@ -38,11 +47,6 @@ end
 
 function List:isNotEmpty()
 	return self:size() > 0
-end
-
-function List:removeAt(n)
-	if self._elements == nil then self._elements = {} end
-	table.remove(self._elements, n)
 end
 
 function List:filter(fn)
@@ -83,6 +87,23 @@ function List:range(start, _end)
 	return newList
 end
 
-function List:string()
-	return "List:" .. str(self._elements)
+function List:concat(delim)
+	if self._size     == nil then return "" end
+	if self._elements == nil then return "" end
+
+	if delim == nil then delim = ", " end
+	local values = {}
+	local size = self._size
+	for i, v in xpairs(self._elements) do
+		table.insert(values, str(v))
+		-- Add delim if end yet
+		if i < size then table.insert(values, delim) end
+	end
+	return table.concat(values, "")
 end
+
+function List:string()
+	return "List:{" .. self:concat(", ") .. "}"
+end
+
+function List:items() return xpairs(self) end

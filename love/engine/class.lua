@@ -25,6 +25,7 @@ function CLASS(name, ...)
 
 	function class.IS(o)
 		local mt = getmetatable(o)
+		if mt == nil then return false end
 		return mt.__index == class
 	end
 
