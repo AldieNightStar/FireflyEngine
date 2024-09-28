@@ -63,7 +63,7 @@ local function deserialize(v)
 	end
 end
 
-local function saveV()
+local function save()
 	local js = json.encode(serialize(V))
 
 	-- Remove old file
@@ -80,7 +80,7 @@ local function saveV()
 	file:close()
 end
 
-local function loadV()
+local function load()
 	if love.filesystem.getInfo(filename) == nil then return end
 	local src = love.filesystem.read(filename)
 	local loaded = json.decode(src)
@@ -89,4 +89,4 @@ local function loadV()
 	end
 end
 
-return {saveV=saveV, loadV=loadV}
+return {save=save, load=load}

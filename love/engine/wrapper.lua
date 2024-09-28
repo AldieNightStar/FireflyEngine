@@ -1,10 +1,17 @@
+local v = require("engine.v")
+
 local nop = function() end
 
-return function(draw, update, beforeUpdateFn, keypressed)
+return function(draw, update, keypressed)
 	if draw           == nil then draw           = nop end
 	if update         == nil then update         = nop end
-	if beforeUpdateFn == nil then beforeUpdateFn = nop end
 	if keypressed     == nil then keypressed     = nop end
+	
+	-- Load variables
+	v.load()
+
+	-- Save variables timer
+	local VSaveTimer = setTimer(5, function() v.save() end):repeating()
 
 	function love.draw()
 		draw()
@@ -12,12 +19,11 @@ return function(draw, update, beforeUpdateFn, keypressed)
 	end
 
 	function love.update(dt)
-		beforeUpdateFn(dt)
 		update(dt)
+		updateUpdaters(dt)
 	end
 
 	function love.keypressed(k, ...)
-		console.key(k)
 		keypressed(k, ...)
 	end
 end
