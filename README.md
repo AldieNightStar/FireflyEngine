@@ -10,6 +10,7 @@
 	* [Interfaces](doc/Interface.md)
 * Game
 	* [Persistent Variables](doc/Variables.md)
+	* [`vpack` and `vunpack` JSON](doc/Vpack.md)
 * Util
 	* [`xpairs`](doc/Xpairs.md)
 	* [JSON](doc/Json.md)
