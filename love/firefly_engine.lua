@@ -12,6 +12,7 @@ require "engine.timer"
 require "engine.signal"
 require "engine.global_signals"
 require "engine.func"
+require "engine.vpack"
 json = require "engine.json"
 
 function init_firefly()
