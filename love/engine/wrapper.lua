@@ -6,11 +6,12 @@ return function(draw, update, beforeUpdateFn)
 	if beforeUpdateFn == nil then beforeUpdateFn = nop end
 	function love.draw()
 		draw()
-		__drawFireflyConsole()
+		fireflyConsole.draw()
 	end
 
 	function love.update(dt)
 		beforeUpdateFn(dt)
 		update(dt)
+		fireflyConsole.update(dt)
 	end
 end
