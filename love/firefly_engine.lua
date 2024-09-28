@@ -11,6 +11,7 @@ require "engine.updaters"
 require "engine.timer"
 require "engine.signal"
 require "engine.global_signals"
+require "engine.func"
 json = require "engine.json"
 
 function init_firefly()

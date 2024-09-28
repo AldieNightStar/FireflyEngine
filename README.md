@@ -20,3 +20,5 @@
 	* [Console](doc/Console.md)
 * Collections
 	* [List](doc/List.md)
+* Functions
+	* [`func`](doc/Funcs.md)
