@@ -61,3 +61,22 @@ IS_CLASS(Point)
 -- Gets class by name, if it's not in global variables
 local Point = CLASS_BY("game.Point")
 ```
+
+
+
+
+## Callable class
+* Just add method `CALL`
+```lua
+-- Define new class
+local Point = CLASS_BY("game.Point")
+
+-- Define CALL function that can have whatever arguments
+-- It will make class callable. Any call to class is the same as call to this function
+function Point:CALL(z)
+	return self.x * self.y * z
+end
+
+-- Then you can call the class as if this is a function
+Point(32)
+```
