@@ -1,25 +1,42 @@
 console = {
 	lines=25,
-	fontSize=20
+	fontSize=20,
+	maxLineSize=130,
+	enabled=true,
 }
 
 local oldPrint = print
 local consoleContent = {}
-local consolePassedTimeSec = 0
 
-fireflyConsole = {}
+local function isRelease(v) return fireflyDevMode == false end
 
 local function addContent(v)
+	local remainder = nil
+
 	-- Remove records if too much
 	if #consoleContent > console.lines then
 		table.remove(consoleContent, 1)
 	end
 
+	if #v > console.maxLineSize then
+		-- Take remainder
+		remainder = string.sub(v, console.maxLineSize+1)
+
+		-- Save current
+		v = string.sub(v, 1, console.maxLineSize)
+	end
+
 	-- Add new record
 	table.insert(consoleContent, v)
+
+	-- If there is some remainder then print also
+	if remainder ~= nil then addContent(remainder) end
 end
 
-function fireflyConsole.print(...)
+function console.print(...)
+	-- Do not do anything in RELEASE
+	if isRelease() then return end
+
 	local args = {...}
 	local printables = {}
 	for _, printable in ipairs(args) do
@@ -28,24 +45,35 @@ function fireflyConsole.print(...)
 	addContent(table.concat(printables, " "))
 end
 
-function fireflyConsole.draw()
-	love.graphics.setColor(1, 1, 1)
+function console.draw()
+	-- Do not do anything in RELEASE
+	if isRelease() then return end
+
+	-- Do not draw if console is disabled
+	if not console.enabled then return end
+
 	for id, t in ipairs(consoleContent) do
 		t = string.gsub(t, "\n", " ")
 		t = string.gsub(t, "\t", " ")
+		-- Print black shadow back
+		love.graphics.setColor(0.1, 0.1, 0.1, 1)
+		love.graphics.print(t, 12, (id*console.fontSize) + 2)
+
+		-- Print white
+		love.graphics.setColor(1, 1, 1, 1)
 		love.graphics.print(t, 10, id*console.fontSize)
 	end
 end
 
-function fireflyConsole.update(dt)
-	-- Remove one record each second
-	consolePassedTimeSec = consolePassedTimeSec + dt
-	if consolePassedTimeSec > 1 then
-		table.remove(consoleContent, 1)
-		consolePassedTimeSec = 0
-	end
+function console.key(k)
+	-- Do not do anything in RELEASE
+	if isRelease() then return end
+
+	if type(k) ~= "string" then return end
+	
+	if k == "`" then console.enabled = not console.enabled end
 end
 
 function print(...)
-	fireflyConsole.print(...)
+	console.print(...)
 end

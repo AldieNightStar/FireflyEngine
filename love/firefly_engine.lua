@@ -36,16 +36,20 @@ function init_firefly()
 	do_load()
 
 	-- Set wrapper
-	wrapper(love.draw, love.update, function(dt)
+	wrapper(love.draw, love.update,
+		-- Before update function
+		function(dt)
+			-- Before update even happens
+			updateTimerSec = updateTimerSec + dt
 
-		-- Before update even happens
-		updateTimerSec = updateTimerSec + dt
-
-		-- Every five seconds do updates
-		if (updateTimerSec > 5) then
-			do_update()
-			updateTimerSec = 0
-		end
-
-	end)
+			-- Every five seconds do updates
+			if (updateTimerSec > 5) then
+				do_update()
+				updateTimerSec = 0
+			end
+		end,
+	
+		-- Keypressed function
+		love.keypressed
+	)
 end
