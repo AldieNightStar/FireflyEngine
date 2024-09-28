@@ -21,3 +21,9 @@ function Signal:emit(data)
 		end
 	end
 end
+
+function Signal:string()
+	local len = 0
+	if self._connections ~= nil then len = #self._connections end
+	return "SIGNAL["..len.."]"
+end
