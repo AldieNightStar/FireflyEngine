@@ -52,11 +52,17 @@ function console.draw()
 	-- Do not draw if console is disabled
 	if not console.enabled then return end
 
-	local col = love.graphics.setColor
+	-- Shorthands
+	local gfx = love.graphics
+	local col = gfx.setColor
 
 	-- Console dimmed background
 	col(0, 0, 0, 0.2)
-	love.graphics.rectangle('fill', 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
+	gfx.rectangle('fill', 0, 0, gfx.getWidth(), gfx.getHeight())
+
+	-- Set up the font size
+	local font = gfx.newFont(console.fontSize)
+	gfx.setFont(font)
 
 	for id, t in xpairs(consoleContent) do
 		t = string.gsub(t, "\n", " ")
@@ -64,11 +70,11 @@ function console.draw()
 
 		-- Print black shadow back
 		col(0.1, 0.1, 0.1, 1)
-		love.graphics.print(t, 12, (id*console.fontSize) + 2)
+		gfx.print(t, 12, (id*console.fontSize) + 2)
 
 		-- Print white
 		col(1, 1, 1, 1)
-		love.graphics.print(t, 10, id*console.fontSize)
+		gfx.print(t, 10, id*console.fontSize)
 	end
 end
 
