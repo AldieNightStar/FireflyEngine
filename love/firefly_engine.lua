@@ -8,6 +8,7 @@ require "engine.console"
 require "engine.interface"
 require "engine.updaters"
 require "engine.timer"
+require "engine.signal"
 json = require "engine.json"
 
 function init_firefly()
