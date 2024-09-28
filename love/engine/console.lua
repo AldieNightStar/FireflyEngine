@@ -52,24 +52,36 @@ function console.draw()
 	-- Do not draw if console is disabled
 	if not console.enabled then return end
 
+	local col = love.graphics.setColor
+
+	-- Console dimmed background
+	col(0, 0, 0, 0.2)
+	love.graphics.rectangle('fill', 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
+
 	for id, t in xpairs(consoleContent) do
 		t = string.gsub(t, "\n", " ")
 		t = string.gsub(t, "\t", " ")
+
 		-- Print black shadow back
-		love.graphics.setColor(0.1, 0.1, 0.1, 1)
+		col(0.1, 0.1, 0.1, 1)
 		love.graphics.print(t, 12, (id*console.fontSize) + 2)
 
 		-- Print white
-		love.graphics.setColor(1, 1, 1, 1)
+		col(1, 1, 1, 1)
 		love.graphics.print(t, 10, id*console.fontSize)
 	end
 end
 
 function console.key(k)
 	-- Do not do anything in RELEASE
-	if isRelease() then return end
+	if isRelease() then return false end
 	
-	if k == "`" then console.enabled = not console.enabled end
+	if k == "`" then
+		console.enabled = not console.enabled
+		return true
+	end
+
+	return false
 end
 
 function print(...)

@@ -24,6 +24,10 @@ return function(draw, update, keypressed)
 	end
 
 	function love.keypressed(k, ...)
+		-- Call console actions
+		-- If console returns true, then no more key processing
+		if console.key(k) then return end
+
 		keypressed(k, ...)
 	end
 end
