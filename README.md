@@ -11,6 +11,7 @@
 * Game
 	* [Persistent Variables](doc/Variables.md)
 * Util
+	* [`xpairs`](doc/Xpairs.md)
 	* [JSON](doc/Json.md)
 	* [Strings `str`](doc/str.md)
 	* [Signal](doc/Signal.md)
