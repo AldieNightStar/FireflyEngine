@@ -42,6 +42,12 @@ function console.print(...)
 	for _, printable in xpairs(args) do
 		table.insert(printables, str(printable))
 	end
+
+	-- Force to print something even if it's not printable
+	if #args < 1 then
+		table.insert(printables, str(args[1]))
+	end
+	
 	addContent(table.concat(printables, " "))
 end
 
