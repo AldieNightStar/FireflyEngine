@@ -1,8 +1,10 @@
 local refs = {}
+local refsLocked = false
 
 FuncRef = CLASS("std.FuncRef", "funcName")
 
 function FuncRef.register(name, func)
+	if refsLocked then error("You can't register new FuncRef function when game is running") end
 	if type(name) ~= "string" then error("Name for FuncRef should be a function string") end
 	if type(func) ~= "function" then return nil end
 	refs[name] = func
@@ -26,4 +28,11 @@ function FuncRef:func()
 	self.cachedFunc = func
 
 	return func
+end
+
+-- This function is living only at the beginning
+-- It's going to be called when game is started
+function FuncRef.lock()
+	FuncRef.lock = nil
+	refsLocked = true
 end

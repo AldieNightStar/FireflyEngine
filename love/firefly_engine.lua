@@ -24,4 +24,7 @@ function init_firefly()
 			love.mousepressed, love.mousereleased, love.mousemoved, love.wheelmoved,
 			love.gamepadpressed, love.gamepadreleased, love.gamepadaxis
 	)
+
+	-- Lock the FuncRefs to not be able to register new functions now
+	FuncRef.lock()
 end
