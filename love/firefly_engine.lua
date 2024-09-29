@@ -1,6 +1,7 @@
 -- Made by HaxiDenti
 -- URL: https://github.com/AldieNightStar
 
+require "engine.len"
 require "engine.xpairs"
 require "engine.class"
 require "engine.str"

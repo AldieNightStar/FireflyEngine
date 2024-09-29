@@ -13,7 +13,7 @@ end
 
 local function iteratorForArray(array)
 	local i = 0
-	local size = #array
+	local size = LEN(array)
 	return function()
 		if i < size then
 			i = i + 1
